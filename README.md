@@ -1,2 +1,2 @@
-# Treck-Bag
+# Trek-Bag
  Travel Item Checklist
