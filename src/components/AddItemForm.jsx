@@ -1,20 +1,20 @@
 import { useState, useRef } from "react";
 import Button from "./Button";
 
-export default function AddItemForm({ setItems }) {
+export default function AddItemForm({ onAddItem }) {
   const [itemText, setItemText] = useState("");
   const inputRef = useRef();
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
     if (!itemText.trim()) {
       alert("Item can't be empty");
       inputRef.current.focus();
     }
-    setItems((prevItems) => [
-      ...prevItems,
-      { id: Date.now(), name: itemText, packed: false },
-    ]);
+
+    const newItem = { id: Date.now(), name: itemText, packed: false };
+    onAddItem(newItem);
     setItemText("");
   };
 
