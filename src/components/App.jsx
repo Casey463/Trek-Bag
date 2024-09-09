@@ -37,13 +37,11 @@ function App() {
   };
 
   const handleMarkAllAsComplete = () => {
-    console.log("called");
     const newItems = items.map((item) => ({ ...item, packed: true }));
     setItems(newItems);
   };
 
   const handleMarkAllAsIncomplete = () => {
-    console.log("called");
     const newItems = items.map((item) => ({ ...item, packed: false }));
     setItems(newItems);
   };
