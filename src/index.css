@@ -74,13 +74,17 @@ header {
   grid-row: 2 / 3;
   background-color: #fff;
   overflow-y: scroll;
-  scrollbar-color: red orange;
   scrollbar-width: thin;
+  scrollbar: none;
   position: relative;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
 .item-list::-webkit-scrollbar {
-  width: 0;
+  width: none;
+  display: none;
+
   /* width: 8px; */
 }
 

@@ -1,6 +1,7 @@
 import { useMemo, useState } from "react";
 import EmptyView from "./EmptyView";
 import Select from "react-select";
+import { useItemsStore } from "../stores/ItemsStore";
 
 const sortingOptions = [
   {
@@ -17,24 +18,25 @@ const sortingOptions = [
   },
 ];
 
-export default function ItemList({
-  items = "",
-  handleDeleteItem,
-  handleToggleCheckItem,
-}) {
+export default function ItemList() {
   const [sortBy, setSortBy] = useState(sortingOptions[0]);
+  const items = useItemsStore((state) => state.items);
+  const deleteItem = useItemsStore((state) => state.deleteItem);
+  const toggleCheckItem = useItemsStore((state) => state.toggleCheckItem);
 
-  const sortedItems = useMemo(() => {
-    [...items].sort((a, b) => {
-      if (sortBy === "packed") {
-        return b.packed - a.packed;
-      }
-      if (sortBy === "unpacked") {
-        return a.packed - b.packed;
-      }
-      return;
-    });
-  }, [items, sortBy]);
+  const sortedItems = useMemo(
+    () =>
+      [...items].sort((a, b) => {
+        if (sortBy === "packed") {
+          return b.packed - a.packed;
+        }
+        if (sortBy === "unpacked") {
+          return a.packed - b.packed;
+        }
+        return;
+      }),
+    [items, sortBy]
+  );
 
   return (
     <ul className="item-list">
@@ -54,8 +56,8 @@ export default function ItemList({
         <Item
           key={item.id}
           item={item}
-          onDeleteItem={handleDeleteItem}
-          onToggleCheckItem={handleToggleCheckItem}
+          onDeleteItem={deleteItem}
+          onToggleCheckItem={toggleCheckItem}
         />
       ))}
     </ul>

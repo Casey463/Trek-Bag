@@ -1,23 +1,26 @@
+import { useItemsStore } from "../stores/ItemsStore";
 import Button from "./Button";
 
-export default function ButtonGroup({
-  handleRemoveAllItems,
-  handleResetAllItems,
-  handleMarkAllAsComplete,
-  handleMarkAllAsIncomplete,
-}) {
+export default function ButtonGroup() {
+  const markAllAsComplete = useItemsStore((state) => state.markAllAsComplete);
+  const resetAllItems = useItemsStore((state) => state.resetAllItems);
+  const markAllAsIncomplete = useItemsStore(
+    (state) => state.markAllAsIncomplete
+  );
+  const removeAllItems = useItemsStore((state) => state.removeAllItems);
+
   return (
     <section className="button-group">
-      <Button onCLick={handleMarkAllAsComplete} buttonType="secondary">
+      <Button onCLick={markAllAsComplete} buttonType="secondary">
         Mark all as complete
       </Button>
-      <Button onCLick={handleMarkAllAsIncomplete} buttonType="secondary">
+      <Button onCLick={markAllAsIncomplete} buttonType="secondary">
         Mark all as incomplete
       </Button>
-      <Button onCLick={handleResetAllItems} buttonType="secondary">
+      <Button onCLick={resetAllItems} buttonType="secondary">
         Reset to initial
       </Button>
-      <Button onCLick={handleRemoveAllItems} buttonType="secondary">
+      <Button onCLick={removeAllItems} buttonType="secondary">
         Remove all items
       </Button>
     </section>
