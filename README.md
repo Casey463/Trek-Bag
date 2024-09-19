@@ -6,5 +6,10 @@
 * Uses Zustand to prevent prop drilling and manage data and data modifying functions within the app.
 ___
 
-#Installation 
+# Installation 
+
+ `git clone` https://github.com/Casey463/Trek-Bag.git
+ `cd` into .\Trek-Bag\
+ `npm run dev` for locally hosted example app 
+
 
