@@ -9,8 +9,8 @@
 
 # Installation 
 
- `git clone` https://github.com/Casey463/Trek-Bag.git \
- `cd` into .\Trek-Bag\\
+ `git clone` https://github.com/Casey463/Trek-Bag.git <br />
+ `cd` into .\Trek-Bag\ <br />
  `npm run dev` for locally hosted example app 
 
 
